@@ -12,12 +12,13 @@ import javax.ws.rs.core.MediaType;
 @Path("/recommendations")
 public class RecommendationResource {
 
-    int SLEEP_MILLISECONDS = 1200;
+    int SLEEP_MILLISECONDS = 0;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<MovieListing> recommendationList() {
         try {
+            SLEEP_MILLISECONDS = Integer.parseInt(System.getenv("SLEEP_MILLISECONDS"));
             TimeUnit.MILLISECONDS.sleep(SLEEP_MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
