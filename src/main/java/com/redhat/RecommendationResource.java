@@ -9,6 +9,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+
 @Path("/recommendations")
 public class RecommendationResource {
 
@@ -19,6 +20,9 @@ public class RecommendationResource {
     public List<MovieListing> recommendationList() {
         try {
             SLEEP_MILLISECONDS = Integer.parseInt(System.getenv("SLEEP_MILLISECONDS"));
+
+            System.out.println("SLEEP MILLISECONDS: " + SLEEP_MILLISECONDS);
+
             TimeUnit.MILLISECONDS.sleep(SLEEP_MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -30,7 +34,7 @@ public class RecommendationResource {
 
         MovieListing l = new MovieListing();
         l.setId(1);
-        l.setImageURL("http://localhost/myimages/movie1.png");
+        l.setImageURL("http://localhost/myimages/biglebowski.png");
         l.setName("The Big Lebowski");       
         ml.add(l);
 
@@ -48,6 +52,7 @@ public class RecommendationResource {
     @Path("{userid}")
     public List<MovieListing> recommendationListByUserId(@PathParam("userid") int id) {
         try {
+            System.out.println("SLEEP MILLISECONDS: " + SLEEP_MILLISECONDS);
             TimeUnit.MILLISECONDS.sleep(SLEEP_MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
