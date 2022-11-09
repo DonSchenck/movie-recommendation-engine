@@ -19,10 +19,7 @@ public class RecommendationResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<MovieListing> recommendationList() {
         try {
-            SLEEP_MILLISECONDS = Integer.parseInt(System.getenv("SLEEP_MILLISECONDS"));
-
-            System.out.println("SLEEP MILLISECONDS: " + SLEEP_MILLISECONDS);
-
+            SLEEP_MILLISECONDS = Integer.parseInt(System.getenv().getOrDefault("SLEEP_MILLISECONDS","0"));
             TimeUnit.MILLISECONDS.sleep(SLEEP_MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -52,7 +49,7 @@ public class RecommendationResource {
     @Path("{userid}")
     public List<MovieListing> recommendationListByUserId(@PathParam("userid") int id) {
         try {
-            System.out.println("SLEEP MILLISECONDS: " + SLEEP_MILLISECONDS);
+            SLEEP_MILLISECONDS = Integer.parseInt(System.getenv().getOrDefault("SLEEP_MILLISECONDS","0"));
             TimeUnit.MILLISECONDS.sleep(SLEEP_MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
